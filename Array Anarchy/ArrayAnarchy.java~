@@ -1,0 +1,182 @@
+import java.util.Scanner;        // For the scanner class
+import java.io.*;                // For file I/O classes
+import javax.swing.JOptionPane;  // For the JOptionPane class
+/*
+ * This program will create and fill a 2D array with data from a file. 
+ * It will then play with the data. Finding totals, averages, minimums, and maximums per row of the Array.
+ * 
+ * Bradley Smith
+ * 4/19/2016
+ * CSC 152
+ * Winnie Yu
+ */
+
+public class ArrayAnarchy
+{
+  
+  public static void main(String[] args) throws IOException
+  {
+    int[][] numbers = new int[4][5];
+    String input;
+    
+    int arrTotal, rowTotal, colTotal, userRow, userCol;
+    double arrAverage;
+    
+    
+    
+    getValues(numbers);
+    
+    arrTotal = getTotal(numbers);
+    
+    arrAverage = getAverage(arrTotal);
+    
+    rowTotal = getAutoRowTotal(numbers);
+    System.out.println("Testing " + rowTotal);
+    
+    input  = JOptionPane.showInputDialog("Which row do you want to count?");
+    userRow = Integer.parseInt(input);
+    userRow -= 1;
+    
+    rowTotal = getRowTotal(numbers, userRow);
+    System.out.println("Testing " + rowTotal);
+    
+    colTotal = getAutoColTotal(numbers);
+    System.out.println("Testing " + colTotal);
+    
+    input  = JOptionPane.showInputDialog("Which column do you want to count?");
+    userCol = Integer.parseInt(input);
+    userCol -= 1;
+    
+    colTotal = getColTotal(numbers, userCol);
+    
+    //getRowTotal 
+    //getColumnTotal
+    //getHighestInRow
+    //getLowestInRow
+    
+  } 
+  // This method opens up a declared file, and extracts the numbers and populates the array.
+  public static void getValues(int[][] array)  throws IOException
+  {
+    
+    String filename; // Required to create the file name.
+    
+    filename = ("discord.txt"); // Declared since input not required for project.
+    
+    // Opens the file and lets the file write into the array.
+    File file = new File(filename);
+    Scanner inputFile = new Scanner(file);
+      
+    // This loop progresses through the numbers in the file and writes them to the array.
+    while (inputFile.hasNext())
+    for (int row = 0; row < array.length; row++)
+      {
+         for (int col = 0; col < array[row].length; col++)
+             array[row][col] = inputFile.nextInt(); 
+      }
+
+    
+    // Closes the file.
+    inputFile.close();
+    
+    // A loop to display the array elements.
+    for(int row = 0; row < 4; row++)
+      
+    { 
+      System.out.println("Row " + (row + 1));
+      for (int col = 0; col < array[row].length - 1; col++)
+        System.out.print(array[row][col] + ", ");
+      
+      System.out.println(array[row][4] + ".");
+    }
+      
+  }
+  
+  public static int getTotal(int[][] array)
+  {
+  int total = 0;
+  
+   for (int row = 0; row < array.length; row++)
+      {
+         for (int col = 0; col < array[row].length; col++)
+           total += array[row][col]; 
+      }
+   System.out.println("Total is " + total + ".");
+      
+  
+  return total;
+  }
+  
+  public static double getAverage(int total)
+  {
+    double average;
+    
+    average = total / 20.0;
+    
+    System.out.println("Average is " + average + ".");
+    
+    return average;
+  }
+public static int getAutoRowTotal(int[][] array)
+{
+  int total = 0;
+  for (int row = 0; row < array.length; row++)
+  {   
+    total = 0;
+      
+         for (int col = 0; col < array[row].length; col++)
+         { 
+           total += array[row][col]; 
+         }
+  
+   System.out.println("Total for row " + (row + 1) + " is " + total + ".");
+  }
+  return total;
+ }
+
+public static int getRowTotal(int[][] array, int row)
+{
+  int total = 0;
+      
+         for (int col = 0; col < array[row].length; col++)
+         { 
+           total += array[row][col]; 
+         }
+  
+   System.out.println("Total for row " + (row + 1) + " is " + total + ".");
+  
+  return total;
+ }
+
+public static int getAutoColTotal(int[][] array)
+{
+ int total = 0;
+  for (int col = 0; col < array.length; col++)
+  {
+    total = 0;
+    for (int row = 0; row < array.length; row++)
+     { 
+      total += array[row][col]; 
+     }
+           
+           System.out.println("Total for column " + (col + 1) + " is " + total + ".");
+   
+  }
+  return total;
+}
+ 
+
+public static int getColTotal(int[][] array, int col)
+{
+  int total = 0;
+      
+         for (int row = 0; row < array.length; row++)
+         { 
+           total += array[row][col]; 
+         }
+  
+   System.out.println("Total for column " + (col + 1) + " is " + total + ".");
+  
+  return total;
+ }
+}

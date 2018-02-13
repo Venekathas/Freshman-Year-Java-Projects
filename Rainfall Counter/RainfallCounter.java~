@@ -1,0 +1,47 @@
+import java.util.Scanner;       // Needed for the Scanner class
+import javax.swing.JOptionPane; // Needed for JOptionPane class
+/*Write a program that uses nested loops to collect data and calculate the average rainfall over a period of years. 
+First the program should ask for the number of years.  The outer loop will iterate once for each year.
+The inner loop will iterate 12 times, once for each month.  Each iteration of the inner loop will ask the user for 
+the inches of rainfall for that month.  After all the iterations, the program will display the number of months,
+the total inches of rainfall, and the average rainfall per month for the entire period.
+
+Input validation: do not accept a number less than 1 for the number of years.  Do not accept negative nmbers for the monthly rainfall.
+
+*/
+
+public class RainfallCounter
+{
+  public static void main(String[] args)
+    
+  {
+    int numYears,    // Number of years input by user.
+        userRain,    // Amount of rain in inches.
+        rpmAverage;  // Holds the calculated amount of rain per year.
+    
+     // Used to input data.
+     Scanner keyboard = new Scanner(System.in);
+     
+     JOptionPane.out.showMessageDialog(null," Hello human! Today we will be calculating how much" +
+                                            " rainfall you have been getting every month on average.");
+     
+     JOptionPane.out.showMessageDialog(null," First, I need to know how many years we are " +
+                                            " considering in our calculations!");
+     
+     input = JOptionPane.out.showInputDialog(null," How far back in time are we going, human?");
+     numYears = Integer.parseInt(input);
+     
+     JOptionPane.out.showMessageDialog(null," No problem. So we need the information for the previous "+
+                                            numYears * 12 + " months.");
+     
+      for (int year = 1; year <= numYears; year++)
+      {
+         // Get the test scores for a student.
+         System.out.println("Month " + month);
+         System.out.println("---------------");
+             
+         for (int month = 1; month <= 12; month++)
+         {
+           System.out.print("Enter amount of rainfall for month " + month + ": ");
+           userRain = keyboard.nextInt();
+           rpmAverage += userRain;  // Add score to total.

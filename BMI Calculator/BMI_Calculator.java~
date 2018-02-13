@@ -1,0 +1,31 @@
+import javax.swing.JOptionPane;
+
+/*
+  This program finds a user's Body Mass Index
+*/
+
+public class BMI_Calculator
+{
+  public static void main(String[] args)
+  {
+    double weight;   // User's weight
+    double height;   // User's height
+    String input;    // To hold inputs
+    double bmi;      // User's BMI
+    
+    //Get the user's weight.
+    input = JOptionPane.showInputDialog("Enter your weight.");
+      
+    weight = Double.parseDouble(input);
+
+    //Get the user's height.
+    input = JOptionPane.showInputDialog("Enter your height.");
+    
+    height = Double.parseDouble(input);
+    
+    //Determine user's BMI
+    bmi = weight * 703 / height*height;
+      
+      System.out.print(bmi);
+  }
+}

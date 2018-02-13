@@ -1,0 +1,60 @@
+import java.util.Scanner;       // Needed for the Scanner class
+import javax.swing.JOptionPane; // Needed for JOptionPane class
+
+
+/*
+   This program caluclates a customer's monthly bill
+   after selecting from one of three data plans.
+*/
+
+public class DataPlans
+{
+  public static void main(String[] args)
+  {
+    String input;     // Holds input value by customer.
+    char dataPackage; // Holds user's selection of plan.
+    int gigs;         // Holds user's data usage in gigs.
+    
+    // Create a Scanner object for keyboard input.
+    Scanner keyboard = new Scanner(System.in);
+    
+    //Asks the user to select a data plan
+    JOptionPane.showMessageDialog(null,"Hello human! Today " +
+                        "I will be helping you select what " +
+                                "dataplan is right for you!");
+    JOptionPane.showMessageDialog(null,"We offer three packages " +
+                      "to humans like yourself. They are simply " +
+                                        "labeled as A, B, and C.");
+    dataPackage = JOptionPane.showInputDialog("Which plan are you interested " +
+                                        "in today, human?").toUpperCase();
+    dataPackage = input
+   
+    //Proceed to ask how much data they need, if need be.
+    
+    if (dataPackage == A || dataPackage == B)
+    {
+    input = JOptionPane.showInputDialog("Before we proceed, " +
+                              "I need to know how many gigs " +
+                               "you plan on using per month!");
+    gigs  = Double.parseDouble(input);
+    }
+    // Display pricing for the selected grade.
+    switch(dataPackage)
+      {
+         case 'a':
+         case 'A':
+            System.out.println("30 cents per lb.");
+            break;
+         case 'b':
+         case 'B':
+            System.out.println("20 cents per lb.");
+            break;
+         case 'c':
+         case 'C':
+            System.out.println("15 cents per lb.");
+            break;
+         default:
+            System.out.println("Invalid choice.");
+      }
+   }
+}
